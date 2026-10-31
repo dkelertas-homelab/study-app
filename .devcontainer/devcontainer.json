@@ -1,0 +1,17 @@
+{
+  "build": {
+    "context": "..",
+    "dockerfile": "Dockerfile"
+  },
+  "postCreateCommand": "scripts/setup",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [
+    "22111",
+    "22112"
+  ],
+  "containerEnv": {
+    "TZ": "Australia/Sydney"
+  }
+}
