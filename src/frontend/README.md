@@ -14,3 +14,8 @@ uv add requests
 
 uv run study-tracker-frontend
 
+
+
+TAG=00 && docker build -t frontend:$TAG .
+:> [!WARNING]
+> 
