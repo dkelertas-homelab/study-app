@@ -1,20 +1,27 @@
+import csv
+import logging
+
+import uvicorn
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-import uvicorn
-import logging
-from typing import List, Optional
 
-from .models import StudySession, StudySessionCreate, Stats
-from .storage import save_session, get_all_sessions, get_sessions_by_tag, get_statistics
 from .config import (
-    APP_NAME,
     API_HOST,
     API_PORT,
-    CORS_ALLOW_ORIGINS,
+    APP_NAME,
     CORS_ALLOW_CREDENTIALS,
-    CORS_ALLOW_METHODS,
     CORS_ALLOW_HEADERS,
+    CORS_ALLOW_METHODS,
+    CORS_ALLOW_ORIGINS,
 )
+from .models import Stats, StudySession, StudySessionCreate
+from .storage import get_all_sessions, get_sessions_by_tag, get_statistics, save_session
+
+# Errors the CSV storage layer can raise:
+# OSError (file can't be opened or written), csv.Error (malformed CSV),
+# ValueError (bad number/date in a row, includes pydantic validation errors),
+# KeyError (a row is missing a column).
+STORAGE_ERRORS = (OSError, csv.Error, ValueError, KeyError)
 
 # Configure logging
 logging.basicConfig(
@@ -59,14 +66,14 @@ async def create_session(session: StudySessionCreate):
     try:
         new_session = save_session(session)
         return new_session
-    except Exception as e:
-        logger.error(f"Error creating session: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Error creating session: {str(e)}")
+    except STORAGE_ERRORS as e:
+        logger.exception("Error creating session")
+        raise HTTPException(status_code=500, detail="Error creating session") from e
 
 
-@app.get("/sessions", response_model=List[StudySession])
+@app.get("/sessions", response_model=list[StudySession])
 async def read_sessions(
-    tag: Optional[str] = Query(None, description="Filter sessions by tag"),
+    tag: str | None = Query(None, description="Filter sessions by tag"),
 ):
     """Get all study sessions, optionally filtered by tag"""
     try:
@@ -76,11 +83,9 @@ async def read_sessions(
         else:
             logger.info("Fetching all sessions")
             return get_all_sessions()
-    except Exception as e:
-        logger.error(f"Error fetching sessions: {str(e)}")
-        raise HTTPException(
-            status_code=500, detail=f"Error fetching sessions: {str(e)}"
-        )
+    except STORAGE_ERRORS as e:
+        logger.exception("Error fetching sessions")
+        raise HTTPException(status_code=500, detail="Error fetching sessions") from e
 
 
 @app.get("/stats", response_model=Stats)
@@ -89,11 +94,9 @@ async def read_stats():
     logger.info("Fetching statistics")
     try:
         return get_statistics()
-    except Exception as e:
-        logger.error(f"Error fetching statistics: {str(e)}")
-        raise HTTPException(
-            status_code=500, detail=f"Error fetching statistics: {str(e)}"
-        )
+    except STORAGE_ERRORS as e:
+        logger.exception("Error fetching statistics")
+        raise HTTPException(status_code=500, detail="Error fetching statistics") from e
 
 
 # Marker for CI pipeline
