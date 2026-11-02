@@ -25,3 +25,6 @@ docker run backend:00
 
 TAG=00 && trivy image --format table --severity CRITICAL,HIGH backend:$TAG
 
+Check out chainguard.dev images - paid free from CVE docker images
+
+TAG=02 && trivy image --format table --ignore-unfixed --severity CRITICAL,HIGH backend:$TAG
