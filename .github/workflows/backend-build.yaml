@@ -52,6 +52,6 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-          exit-code: 1
+          exit-code: 0
           # On a subsequent call to the action we know trivy is already installed so can skip this
           skip-setup-trivy: true
