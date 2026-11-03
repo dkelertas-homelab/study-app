@@ -28,11 +28,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Build an image from Dockerfile
-        run: docker build -t backend .
+        run: docker build -t backend-app:latest .
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: backend
+          image-ref: backend-app:latest
           format: 'sarif'
           output: 'trivy-results.sarif'
           ignore-unfixed: true
@@ -47,7 +47,7 @@ jobs:
       - name: Run Trivy vulnerability scanner again
         uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: backend
+          image-ref: backend-app:latest
           format: 'table'
           ignore-unfixed: true
           vuln-type: 'os,library'
