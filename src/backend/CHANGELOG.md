@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.1.0...backend-v0.2.0) (2026-11-09)
+
+
+### Features
+
+* **backend:** added container building and pushing ([#10](https://github.com/dkelertas-homelab/study-app/issues/10)) ([7e9b32d](https://github.com/dkelertas-homelab/study-app/commit/7e9b32d67038ce001e1129c96be648d4ba559528))
+
 ## 0.1.0 (2026-11-09)
 
 
