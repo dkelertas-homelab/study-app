@@ -121,6 +121,9 @@ def health():
     ), 200 if api_status else 503
 
 
+# Marker for CI pipeline
+# This comment is used to trigger the CI pipeline when changes are made to this file.
+#
 def main():
     """Entry point for the application when run as a script"""
     logger.info("Starting DevOps Study Timer Frontend")
