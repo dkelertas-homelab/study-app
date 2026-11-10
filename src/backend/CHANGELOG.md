@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.3.0...backend-v0.3.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **gha:** add missing k3d dependancies on python test ([#22](https://github.com/dkelertas-homelab/study-app/issues/22)) ([aeed2d6](https://github.com/dkelertas-homelab/study-app/commit/aeed2d6e0bbec55e3b8f9993e93983fbafcd9134))
+
 ## [0.3.0](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.2.0...backend-v0.3.0) (2026-11-10)
 
 
