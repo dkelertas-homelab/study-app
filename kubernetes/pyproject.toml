@@ -6,3 +6,12 @@ requires-python = ">=3.13"
 dependencies = [
     "requests>=2.34.2",
 ]
+
+[dependency-groups]
+dev = [
+    "k3d>=3.2.0",
+    "kubernetes",
+]
+
+[tool.uv.sources]
+kubernetes = { workspace = true }
