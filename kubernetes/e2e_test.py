@@ -238,8 +238,7 @@ class K8sTestEnvironment:
         # `kubectl wait pods --all` fails instantly on "no matching resources".
         logger.info("Waiting for deployments to be available...")
         self.run_command(
-            "kubectl wait --for=condition=Available deployment --all "
-            "-n study-app --timeout=120s"
+            "kubectl wait --for=condition=Available deployment --all -n study-app --timeout=120s"
         )
 
         # Get the service URLs
