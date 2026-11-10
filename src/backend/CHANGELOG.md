@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.2.0...backend-v0.3.0) (2026-11-10)
+
+
+### Features
+
+* **gha:** added a workflow to run and end-to-end python test ([#20](https://github.com/dkelertas-homelab/study-app/issues/20)) ([2070b2c](https://github.com/dkelertas-homelab/study-app/commit/2070b2c14eab7dd84f8f305c4df11d463b7101d0))
+
 ## [0.2.0](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.1.0...backend-v0.2.0) (2026-11-09)
 
 
