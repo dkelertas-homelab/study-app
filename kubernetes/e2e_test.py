@@ -45,6 +45,15 @@ class K8sTestEnvironment:
             sys.exit(1)
         logger.info("kubectl is installed and available.")
 
+    def check_k3d_installed(self):
+        """Check if k3d is installed and available"""
+        if shutil.which("k3d") is None:
+            logger.error(
+                "k3d is not installed or not in PATH. Please install k3d before running tests."
+            )
+            sys.exit(1)
+        logger.info("k3d is installed and available.")
+
     def run_command(self, cmd, cwd=None, shell=False, check=True, capture_output=False):
         """Run a shell command and handle errors"""
         logger.info(f"Running command: {cmd}")

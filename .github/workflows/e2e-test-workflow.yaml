@@ -1,6 +1,7 @@
 name: End-to-end Test for Study App
 
 on:
+  pull_request:
   workflow_run:
     workflows: [Build and Push Docker Images]
     types:
