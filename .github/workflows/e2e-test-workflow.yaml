@@ -17,17 +17,25 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install K3d
+        uses: nolar/setup-k3d-k3s@v1
+        with:
+          version: "latest"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-creation: true
+
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: "latest"
+
       - name: Install UV
         uses: astral-sh/setup-uv@v5
 
       - name: Set up Python
         run: uv python install
 
-      - name: Install dependencies
-        run: |
-          uv sync --locked --dev
-
       - name: Run tests
         run: |
-          uv run e2e_test.py
+          uv run python e2e_test.py
 

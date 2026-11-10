@@ -35,6 +35,7 @@ class K8sTestEnvironment:
 
         # Check if kubectl is installed
         self.check_kubectl_installed()
+        self.check_k3d_installed()
 
     def check_kubectl_installed(self):
         """Check if kubectl is installed and available"""
@@ -44,6 +45,15 @@ class K8sTestEnvironment:
             )
             sys.exit(1)
         logger.info("kubectl is installed and available.")
+
+    def check_k3d_installed(self):
+        """Check if k3d is installed and available"""
+        if shutil.which("k3d") is None:
+            logger.error(
+                "k3d is not installed or not in PATH. Please install k3d before running tests."
+            )
+            sys.exit(1)
+        logger.info("k3d is installed and available.")
 
     def run_command(self, cmd, cwd=None, shell=False, check=True, capture_output=False):
         """Run a shell command and handle errors"""
@@ -223,10 +233,13 @@ class K8sTestEnvironment:
         # Apply using kubectl apply and kustomize
         self.run_command(f"kubectl apply -k {kustomize_path}")
 
-        # Wait for pods to be ready
-        logger.info("Waiting for pods to be ready...")
+        # Wait for the Deployments, not the pods: the Deployments exist as soon
+        # as `apply` returns, but their pods may not have been created yet, and
+        # `kubectl wait pods --all` fails instantly on "no matching resources".
+        logger.info("Waiting for deployments to be available...")
         self.run_command(
-            "kubectl wait --for=condition=Ready pods --all -n study-app --timeout=120s"
+            "kubectl wait --for=condition=Available deployment --all "
+            "-n study-app --timeout=120s"
         )
 
         # Get the service URLs
