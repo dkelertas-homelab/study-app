@@ -35,6 +35,7 @@ class K8sTestEnvironment:
 
         # Check if kubectl is installed
         self.check_kubectl_installed()
+        self.check_k3d_installed()
 
     def check_kubectl_installed(self):
         """Check if kubectl is installed and available"""
