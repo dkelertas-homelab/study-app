@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.3.2...backend-v0.4.0) (2026-11-10)
+
+
+### Features
+
+* **backend:** create backend release to test workflow ([#27](https://github.com/dkelertas-homelab/study-app/issues/27)) ([f98cd30](https://github.com/dkelertas-homelab/study-app/commit/f98cd3094573f22dedb2067e17f852374ebf9e0c))
+
 ## [0.3.2](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.3.1...backend-v0.3.2) (2026-11-10)
 
 
