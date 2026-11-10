@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.3.1...backend-v0.3.2) (2026-11-10)
+
+
+### Bug Fixes
+
+* **gha:** test k3d exists ([#24](https://github.com/dkelertas-homelab/study-app/issues/24)) ([af492ac](https://github.com/dkelertas-homelab/study-app/commit/af492ac0db8db7af9b234bfdfb21227fa57406ec))
+
 ## [0.3.1](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.3.0...backend-v0.3.1) (2026-11-10)
 
 
