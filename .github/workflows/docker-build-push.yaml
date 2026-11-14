@@ -88,7 +88,7 @@ jobs:
     uses: ./.github/workflows/update-gitops.yaml
     with:
       tag: ${{ needs.build-and-push-backend.outputs.tags || needs.build-and-push-frontend.outputs.tags }}
-      app: ${{ needs.build-and-push-backend.outputs.app || needs.build-and-push-frontend.outputs.app }}
+      image: ${{ needs.build-and-push-backend.outputs.image || needs.build-and-push-frontend.outputs.image }}
 
     secrets:
       GITOPS_DEPLOY_KEY: ${{ secrets.GITOPS_DEPLOY_KEY }}
