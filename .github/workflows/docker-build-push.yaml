@@ -87,7 +87,7 @@ jobs:
     if: always() && (needs.build-and-push-backend.result == 'success' || needs.build-and-push-frontend.result == 'success')
     uses: ./.github/workflows/update-gitops.yaml
     with:
-      tag: ${{ needs.build-and-push-backend.outputs.tags || needs.build-and-push-frontend.outputs.tags }}
+      tag: ${{ needs.build-and-push-backend.outputs.tag || needs.build-and-push-frontend.outputs.tag }}
       image: ${{ needs.build-and-push-backend.outputs.image || needs.build-and-push-frontend.outputs.image }}
 
     secrets:
