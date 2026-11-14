@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.4.1...backend-v0.4.2) (2026-11-14)
+
+
+### Bug Fixes
+
+* **gha:** trigger had typo in workflow filename yaml not yml ([303c53f](https://github.com/dkelertas-homelab/study-app/commit/303c53fa847ff43c1f80a10f47b1c8aae0ccd5a8))
+
 ## [0.4.1](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.4.0...backend-v0.4.1) (2026-11-14)
 
 
