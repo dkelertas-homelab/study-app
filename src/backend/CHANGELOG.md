@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.4.3...backend-v0.5.0) (2026-11-14)
+
+
+### Features
+
+* **backend:** ci trigger ([3b962ce](https://github.com/dkelertas-homelab/study-app/commit/3b962cee33f56db35a0957dcbdf9da9d1779811d))
+
 ## [0.4.3](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.4.2...backend-v0.4.3) (2026-11-14)
 
 
