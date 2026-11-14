@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.4.2...backend-v0.4.3) (2026-11-14)
+
+
+### Bug Fixes
+
+* **gha:** image tag not app ([af79bcf](https://github.com/dkelertas-homelab/study-app/commit/af79bcfd18e984feeae06cc78512d8f755644e86))
+
 ## [0.4.2](https://github.com/dkelertas-homelab/study-app/compare/backend-v0.4.1...backend-v0.4.2) (2026-11-14)
 
 
