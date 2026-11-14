@@ -1,4 +1,6 @@
 [tools]
+flux2 = "latest"
+gh = "latest"
 k3d = "latest"
 k9s = "latest"
 kubectl = "latest"
@@ -16,6 +18,7 @@ experimental = true
 [env]
 APP_REPO = 'study-app'
 GITOPS_REPO = 'study-app-gitops'
+GITUSER = 'dkelertas-homelab'
 
 
 [hooks]
@@ -32,3 +35,12 @@ run = "bash ./kubernetes/setup_cluster_minimal"
 [tasks.e2e-test]
 description = "Run end-to-end tests on the Kubernetes deployment"
 run = "cd ./kubernetes && uv run e2e_test.py"
+
+[tasks.setup-deploy-key]
+description = "Setup github deploy key for repo"
+run = "bash ./scripts/setup_deploy_key"
+
+[tasks.k8s-setup-gitops]
+description = "Setup a cluster configured with GitOps using Flux"
+run = "bash ./kubernetes/setup_cluster_gitops"
+
